@@ -1,0 +1,92 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Wed1\\GiaoDien\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{CFEE1BC8-FE77-4DC1-AE86-BBB2D6CF6315}|GiaoDien\\GiaoDien.csproj|d:\\wed1\\giaodien\\giaodien\\views\\staticpages\\search.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{CFEE1BC8-FE77-4DC1-AE86-BBB2D6CF6315}|GiaoDien\\GiaoDien.csproj|solutionrelative:giaodien\\views\\staticpages\\search.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CFEE1BC8-FE77-4DC1-AE86-BBB2D6CF6315}|GiaoDien\\GiaoDien.csproj|D:\\Wed1\\GiaoDien\\giaodien\\images\\logo-nha-pho-viet-nam-compressed.jpg||{177559E0-D141-11D0-92DF-00A0C9138C45}",
+      "RelativeMoniker": "D:0:0:{CFEE1BC8-FE77-4DC1-AE86-BBB2D6CF6315}|GiaoDien\\GiaoDien.csproj|solutionrelative:giaodien\\images\\logo-nha-pho-viet-nam-compressed.jpg||{177559E0-D141-11D0-92DF-00A0C9138C45}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CFEE1BC8-FE77-4DC1-AE86-BBB2D6CF6315}|GiaoDien\\GiaoDien.csproj|D:\\Wed1\\GiaoDien\\giaodien\\app_start\\routeconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CFEE1BC8-FE77-4DC1-AE86-BBB2D6CF6315}|GiaoDien\\GiaoDien.csproj|solutionrelative:giaodien\\app_start\\routeconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CFEE1BC8-FE77-4DC1-AE86-BBB2D6CF6315}|GiaoDien\\GiaoDien.csproj|D:\\Wed1\\GiaoDien\\giaodien\\controllers\\staticpagescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CFEE1BC8-FE77-4DC1-AE86-BBB2D6CF6315}|GiaoDien\\GiaoDien.csproj|solutionrelative:giaodien\\controllers\\staticpagescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "logo-nha-pho-viet-nam-compressed.jpg - Bitmap [768x787, 24 bit, JPG]",
+              "DocumentMoniker": "D:\\Wed1\\GiaoDien\\GiaoDien\\Images\\logo-nha-pho-viet-nam-compressed.jpg",
+              "RelativeDocumentMoniker": "GiaoDien\\Images\\logo-nha-pho-viet-nam-compressed.jpg",
+              "ToolTip": "D:\\Wed1\\GiaoDien\\GiaoDien\\Images\\logo-nha-pho-viet-nam-compressed.jpg - Bitmap [768x787, 24 bit, JPG]",
+              "RelativeToolTip": "GiaoDien\\Images\\logo-nha-pho-viet-nam-compressed.jpg - Bitmap [768x787, 24 bit, JPG]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001533|",
+              "WhenOpened": "2024-09-27T17:00:06.584Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "RouteConfig.cs",
+              "DocumentMoniker": "D:\\Wed1\\GiaoDien\\GiaoDien\\App_Start\\RouteConfig.cs",
+              "RelativeDocumentMoniker": "GiaoDien\\App_Start\\RouteConfig.cs",
+              "ToolTip": "D:\\Wed1\\GiaoDien\\GiaoDien\\App_Start\\RouteConfig.cs",
+              "RelativeToolTip": "GiaoDien\\App_Start\\RouteConfig.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAABMAAAAOAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-27T10:13:25.001Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "StaticPagesController.cs",
+              "DocumentMoniker": "D:\\Wed1\\GiaoDien\\GiaoDien\\Controllers\\StaticPagesController.cs",
+              "RelativeDocumentMoniker": "GiaoDien\\Controllers\\StaticPagesController.cs",
+              "ToolTip": "D:\\Wed1\\GiaoDien\\GiaoDien\\Controllers\\StaticPagesController.cs",
+              "RelativeToolTip": "GiaoDien\\Controllers\\StaticPagesController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAgAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-27T10:11:31.638Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Search.cshtml",
+              "DocumentMoniker": "D:\\Wed1\\GiaoDien\\GiaoDien\\Views\\StaticPages\\Search.cshtml",
+              "RelativeDocumentMoniker": "GiaoDien\\Views\\StaticPages\\Search.cshtml",
+              "ToolTip": "D:\\Wed1\\GiaoDien\\GiaoDien\\Views\\StaticPages\\Search.cshtml",
+              "RelativeToolTip": "GiaoDien\\Views\\StaticPages\\Search.cshtml",
+              "ViewState": "AQIAAKoBAAAAAAAAAAAAAMABAAAeAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-27T10:07:29.038Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

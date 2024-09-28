@@ -1,0 +1,501 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Search</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        .header {
+            background-color: #2E7D32;
+            padding: 15px;
+            color: white;
+            text-align: center;
+        }
+
+        .search-bar {
+            margin: 20px auto;
+            display: flex;
+            justify-content: center;
+        }
+
+            .search-bar input, .search-bar select {
+                padding: 10px;
+                margin: 0 10px;
+                font-size: 16px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+            }
+
+            .search-bar button {
+                padding: 10px 20px;
+                font-size: 16px;
+                color: white;
+                background-color: #2E7D32;
+                border: none;
+                border-radius: 5px;
+            }
+
+        .search-results {
+            max-width: 1200px;
+            margin: 20px auto;
+        }
+
+        .job-item {
+            background-color: white;
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .job-info {
+            flex: 3;
+        }
+
+            .job-info h3 {
+                margin: 0;
+                color: #2E7D32;
+            }
+
+            .job-info p {
+                margin: 5px 0;
+            }
+
+        .job-salary {
+            flex: 1;
+            text-align: right;
+            font-size: 20px;
+            color: #2E7D32;
+        }
+
+        .filters {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+            .filters button {
+                background-color: white;
+                border: 1px solid #ddd;
+                padding: 5px 10px;
+                border-radius: 5px;
+                font-size: 14px;
+            }
+
+        .sidebar {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: white;
+        }
+
+        .related-jobs {
+            margin-bottom: 20px;
+        }
+
+        
+        /* CSS cho nút Lọc nâng cao */
+        #advancedFilter {
+            padding: 12px 22px; /* Đảm bảo kích thước tương tự nút Search */
+            font-size: 18px;
+            color: white;
+            background-color: #2E7D32;
+            border: none;
+            border-radius: 5px;
+            margin-right: 10px;
+            margin-top : 0px; /* Khoảng cách giữa nút Lọc nâng cao và nút Search */
+        }
+
+        /* CSS bố cục các khung và nút tìm kiếm */
+
+        /* Đảm bảo tất cả phần tử nằm trên một dòng và căn đều */
+        .search-bar {
+            display: flex;
+            align-items: center; /* Căn giữa theo trục dọc */
+            justify-content: center; /* Căn giữa theo chiều ngang */
+            gap: 20px; /* Tăng khoảng cách giữa các phần tử */
+            margin: 20px 0; /* Khoảng cách với các phần khác */
+            padding: 10px; /* Thêm khoảng cách xung quanh phần tìm kiếm */
+            background-color: #f9f9f9; /* Tô màu nền nhẹ để tách biệt phần tìm kiếm */
+            border-radius: 10px; /* Bo tròn các góc cho mềm mại */
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Tạo bóng nhẹ để phần tìm kiếm nổi bật */
+        }
+
+            /* Định dạng chung cho các input, select và button */
+            .search-bar input[type="text"],
+            .search-bar select,
+            .search-bar button {
+                padding: 12px; /* Tăng padding để các phần tử trông rộng hơn */
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                font-size: 16px;
+            }
+
+            /* Đặt chiều rộng cho các ô tìm kiếm và chọn địa điểm */
+            .search-bar input[type="text"] {
+                flex: 3; /* Input chiếm nhiều không gian hơn */
+                min-width: 250px; /* Đặt chiều rộng tối thiểu để không bị quá nhỏ */
+            }
+
+            .search-bar select {
+                flex: 1; /* Select chiếm ít không gian hơn input */
+                min-width: 150px; /* Đặt chiều rộng tối thiểu */
+            }
+
+            /* Định dạng riêng cho nút */
+            .search-bar button {
+                background-color: #4CAF50;
+                color: white;
+                border: none;
+                cursor: pointer;
+                min-width: 100px; /* Đặt chiều rộng tối thiểu cho các nút */
+            }
+
+            .search-bar .search-button {
+                min-width: 120px; /* Tăng kích thước cho nút Search */
+            }
+
+            .search-bar .advanced-filter {
+                min-width: 150px; /* Tăng kích thước cho nút Lọc nâng cao */
+            }
+
+            /* Nút hover */
+            .search-bar button:hover {
+                background-color: #45a049;
+            }
+
+
+        /* CSS cho thêm thông tin khi chọn địa điểm */
+        /* Căn chỉnh tổng thể cho container */
+        .container {
+            max-width: 900px; 
+            margin: 20px auto;
+            padding: 20px;
+        }
+
+        /* Tiêu đề chính */
+        h1 {
+            font-size: 28px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        /* Điều hướng (Breadcrumb) */
+        .pagination {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 20px;
+        }
+
+            .pagination li {
+                display: inline;
+                margin-right: 10px;
+            }
+
+                .pagination li a {
+                    text-decoration: none;
+                    color: #007bff;
+                    font-size: 16px;
+                }
+
+                .pagination li.active a {
+                    font-weight: bold;
+                    color: #333;
+                }
+
+
+
+        /*CSS Gợi ý địa điểm */
+        .suggestions h2 {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .locations {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+            .locations .badge {
+                background-color: #f0f0f0;
+                color: #007bff;
+                padding: 8px 12px;
+                margin-right: 10px;
+                margin-bottom: 10px;
+                border-radius: 4px;
+                font-size: 14px;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+            }
+
+                .locations .badge:hover {
+                    background-color: #e7f3fe;
+                }
+
+
+
+        /* CSS nút tạo thông báo việc làm  */
+        .btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            display: inline-block;
+        }
+
+            .btn:hover {
+                background-color: #218838;
+            }
+
+
+
+          /* CSS phân cách giữa logo nội dung */
+        .job-info {
+            flex-grow: 1;
+            text-align: center; /* Căn giữa nội dung */
+        }
+
+        .job-salary {
+            flex: 0 0 auto; /* Đảm bảo phần lương không bị co giãn */
+            margin-left: 20px; /* Khoảng cách giữa nội dung và phần lương */
+        }
+
+        .header-image {
+            max-width: 120px; /* Điều chỉnh kích thước theo ý muốn */
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .job-item {
+            border: 2px solid #000; /* Đặt màu viền theo ý muốn */
+            padding: 10px; /* Tạo khoảng cách giữa nội dung và viền */
+            margin-bottom: 10px; /* Tạo khoảng cách giữa các div */
+        }
+
+
+
+
+    </style>
+</head>
+
+
+
+
+
+
+
+<!-- Phần thân -->
+<!-- Đầu Thân Trang -->
+<body>
+    <div class="header">
+        <h1>TÌM KIẾM VÀ ĐỀ XUẤT THỰC TẬP</h1>
+    </div>
+    <!-- Giữa Thân Trang -->
+    <!-- ô tìm công việc thực tập -->
+    <div class="search-bar">
+        <input type="text" placeholder="Vị trí thực tập ...">
+        <!-- ô tìm địa điểm thực tập -->
+        <select>
+            <option value="Địa Điểm">Địa Điểm</option>
+            <option value="BinhDuong">Binh Duong</option>
+            <option value="HoChiMinh">Ho Chi Minh</option>
+            <option value="HaNoi">Ha Noi</option>
+            <option value="HaNoi">...</option>
+        </select>
+        <!-- Nút "Lọc nâng cao" -->
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="input-group mb-3">
+                        <button class="btn btn-secondary" type="button" id="advancedFilter">Lọc nâng cao</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- nút tìm kiếm -->
+        <button type="submit">Search</button>
+    </div>
+
+
+
+
+
+
+
+    <!--Thêm thông tin khi chọn địa điểm -->
+    <div class="container">
+        <h1>Tuyển dụng thực tập sinh viên tại Bình Dương [Update 27/09/2024]</h1>
+        <nav>
+            <ul class="pagination">
+                <li class="active"><a href="#">Trang chủ</a></li>
+                <li><a href="#">Tuyển dụng thực tập sinh tại Bình Dương [Update 27/09/2024]</a></li>
+            </ul>
+        </nav>
+        <div class="suggestions">
+            <h2>Gợi ý địa điểm:</h2>
+            <div class="locations">
+                <span class="badge">Bình Dương</span>
+                <span class="badge">Thủ Dầu Một</span>
+                <span class="badge">Dĩ An</span>
+                <span class="badge">Thuận An</span>
+                <span class="badge">Bến Cát</span>
+                <span class="badge">Tân Uyên</span>
+                <span class="badge">Bầu Bàng</span>
+                <span class="badge">Bắc Tân Uyên</span>
+                <span class="badge">Phú Giáo</span>
+            </div>
+        </div>
+        <button class="btn btn-primary">Thông báo thực tập</button>
+    </div>
+
+<!-- Phần ưu tiên hiển thị -->
+    <div class="search-results">
+        <div class="filters">
+            <div>
+                <strong> Ưu tiên hiển thị: </strong>
+                <button> Ngày đăng</button>
+                <button> Ngày cập nhật </button>
+            </div>
+            <div>
+                <strong>Sort by:</strong>
+                <button>Search by AI</button>
+                <button>Date Posted</button>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+        <div class="job-item">
+            <img src=" ~/Images/logo-nha-pho-viet-nam-compressed.jpg" alt="Image Description" class="header-image">
+            <div class="job-info">
+                <h3>Center Sales Manager - Binh Duong/Ha Noi/Ho Chi Minh</h3>
+                <p>Company: Mathnasium Việt Nam</p>
+                <p>Location: Binh Duong & 3 other locations</p>
+                <p>Updated: 3 hours ago</p>
+            </div>
+            <div class="job-salary">20 - 30 triệu</div>
+        </div>
+
+
+
+
+
+
+        <div class="job-item">
+            <img src=" ~/Images/logo-nha-pho-viet-nam-compressed.jpg" alt="Image Description" class="header-image">
+            <div class="job-info">
+                <h3>Center Sales Manager - Binh Duong/Ha Noi/Ho Chi Minh</h3>
+                <p>Company: Mathnasium Việt Nam</p>
+                <p>Location: Binh Duong & 3 other locations</p>
+                <p>Updated: 3 hours ago</p>
+            </div>
+            <div class="job-salary">20 - 30 triệu</div>
+        </div>
+
+
+
+        <div class="job-item">
+            <img src=" ~/Images/logo-nha-pho-viet-nam-compressed.jpg" alt="Image Description" class="header-image">
+            <div class="job-info">
+                <h3>Center Sales Manager - Binh Duong/Ha Noi/Ho Chi Minh</h3>
+                <p>Company: Mathnasium Việt Nam</p>
+                <p>Location: Binh Duong & 3 other locations</p>
+                <p>Updated: 3 hours ago</p>
+            </div>
+            <div class="job-salary">20 - 30 triệu</div>
+        </div>
+
+
+
+
+        <div class="job-item">
+            <img src=" ~/Images/logo-nha-pho-viet-nam-compressed.jpg" alt="Image Description" class="header-image">
+            <div class="job-info">
+                <h3>Center Sales Manager - Binh Duong/Ha Noi/Ho Chi Minh</h3>
+                <p>Company: Mathnasium Việt Nam</p>
+                <p>Location: Binh Duong & 3 other locations</p>
+                <p>Updated: 3 hours ago</p>
+            </div>
+            <div class="job-salary">20 - 30 triệu</div>
+        </div>
+
+
+
+        <div class="job-item">
+            <img src=" ~/Images/logo-nha-pho-viet-nam-compressed.jpg" alt="Image Description" class="header-image">
+            <div class="job-info">
+                <h3>Center Sales Manager - Binh Duong/Ha Noi/Ho Chi Minh</h3>
+                <p>Company: Mathnasium Việt Nam</p>
+                <p>Location: Binh Duong & 3 other locations</p>
+                <p>Updated: 3 hours ago</p>
+            </div>
+            <div class="job-salary">20 - 30 triệu</div>
+        </div>
+
+
+
+
+
+        <div class="job-item">
+            <img src=" ~/Images/logo-nha-pho-viet-nam-compressed.jpg" alt="Image Description" class="header-image">
+            <div class="job-info">
+                <h3>Center Sales Manager - Binh Duong/Ha Noi/Ho Chi Minh</h3>
+                <p>Company: Mathnasium Việt Nam</p>
+                <p>Location: Binh Duong & 3 other locations</p>
+                <p>Updated: 3 hours ago</p>
+            </div>
+            <div class="job-salary">20 - 30 triệu</div>
+        </div>
+
+
+
+
+        <!-- Add more job items here -->
+
+        <div class="sidebar">
+            <div class="related-jobs">
+                <h3>Related Jobs</h3>
+                <p>Công Ty CP Đầu tư và Dịch vụ Đất Xanh</p>
+                <p>Chuyên Viên Kinh Doanh Bất Động Sản</p>
+            </div>
+        </div>
+
+
+        <h1>Thông tin về Bình Dương</h1>
+
+        <p>Bình Dương là một tỉnh phía Nam cách trung tâm Thành phố Hồ Chí Minh <span class="highlight">30km</span> theo đường quốc lộ 13. Tỉnh Bình Dương đứng thứ <span class="highlight">6</span> trong <span class="highlight">63</span> tỉnh thành về dân số, đặc biệt, địa phương này có tới <span class="highlight">50%</span> dân số là người nhập cư, lý giải cho việc đây là tỉnh có tỷ lệ gia tăng dân số cơ học rất cao.</p>
+
+        <p>Về kinh tế, Bình Dương xếp thứ ba về <span class="highlight">Tổng sản phẩm trên địa bàn (GRDP)</span>, xếp thứ ba về <span class="highlight">Bình quân tổng sản phẩm trên địa bàn</span> và xếp thứ tám về <span class="highlight">tốc độ tăng trưởng GRDP</span>. Với thế mạnh về lực lượng lao động đông đảo, Bình Dương đang ngày càng thu hút nhiều nhà đầu tư trong và ngoài nước.</p>
+
+        <p>Bình Dương có rất nhiều khu công nghiệp đang hoạt động, trong đó phải kể đến <span class="highlight">KCN Sóng Thần I</span>, <span class="highlight">KCN Sóng Thần II</span>, <span class="highlight">KCN Đồng An</span>, <span class="highlight">KCN Nam Tân Uyên</span>, <span class="highlight">KCN Tân Đông Hiệp A</span>, v.v.. đều là những KCN đang cho thuê gần hết diện tích. Điều đó đã khiến nhu cầu tuyển dụng việc làm trong những năm gần đây ở địa phương này tăng cao, đặc biệt trong mảng <span class="highlight">chế tạo, chế biến, sản xuất</span>.</p>
+
+        <p>Nếu bạn đang có nhu cầu tìm việc làm tại Bình Dương, <span class="highlight">TopCV</span> là nền tảng lý tưởng để bạn tìm kiếm được công việc phù hợp với mong muốn và khả năng của mình. Hiện TopCV có hơn <span class="highlight">1,000</span> tin tuyển dụng việc làm tại Bình Dương, các tin đăng được lựa chọn và kiểm tra kỹ càng trước khi công khai tới người dùng. Để ứng tuyển vào các công việc này, bạn chỉ cần tạo <span class="highlight">CV online</span> trên trang <span class="highlight">Mẫu CV</span> và tiến hành nộp CV để chúng tôi giúp bạn kết nối tới những nhà tuyển dụng uy tín.</p>
+
+    </div>
+</body>
+</html>
